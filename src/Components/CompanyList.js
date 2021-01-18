@@ -35,7 +35,7 @@ export class CompanyList extends Component {
           <Card border="secondary" key={company.Id} style={{ width: "25rem", justifyContent:'center', marginLeft: '3rem'}}>
             <Card.Img variant="top" src={company.PhotoURL} />
             <Card.Body>
-              <Card.Title>{company.Name}</Card.Title>
+              <Card.Title>{company.Name}.</Card.Title>
             </Card.Body>
             <ListGroup className="list-group-flush">
               <ListGroupItem>{company.VehicleAmount}</ListGroupItem>
