@@ -2,11 +2,15 @@ import './App.css';
 
 import React from 'react'
 import {Home} from './Components/Home'
-import {CompanyPanel} from './Components/CompanyPanel'
+import {CompanyPanel} from './Components/ManagementComps/CompanyPanel'
+import {ManageCompany} from './Components/ManagementComps/ManageCompany'
+import {ManageVehicles} from './Components/ManagementComps/ManageVehicles'
+import {ManageStaff} from './Components/ManagementComps/ManageStaff'
 import {CompanyList} from './Components/CompanyList'
-import {StaffPanel} from './Components/StaffPanel'
+import {StaffPanel} from './Components/ManagementComps/StaffPanel'
 import {Login} from './Components/Login'
 import {Navigation} from './Components/Navigation'
+import {PopUpAddVehicle} from './Components/ManagementComps/PopUpAddVehicle'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 
@@ -22,6 +26,9 @@ function App() {
 
     <Route path='/' component = {Home} exact/>
     <Route path='/companypanel' component = {CompanyPanel} exact />
+    <Route path='/managecompany' component = {ManageCompany} exact />
+    <Route path='/managevehicle' component = {ManageVehicles} exact />
+    <Route path='/managestaff' component = {ManageStaff} exact />
     <Route path='/companylist' component = {CompanyList} exact/>
     <Route path='/staffpanel' component = {StaffPanel} exact/>
     <Route path='/login' component = {Login} exact/>
@@ -29,6 +36,7 @@ function App() {
     </Switch>
 
     </BrowserRouter>
+    
   )
 }
 

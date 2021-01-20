@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Card, ListGroupItem, ListGroup ,CardColumns, Button} from "react-bootstrap";
+import { Card, ListGroupItem, ListGroup ,CardColumns, Button, ButtonToolbar} from "react-bootstrap";
+import {MoreInformationForCompany} from './MoreInformatinForCompany'
 
 export class CompanyList extends Component {
   constructor(props) {
@@ -43,7 +44,7 @@ export class CompanyList extends Component {
               <ListGroupItem>{company.Point}</ListGroupItem>
             </ListGroup>
             <Card.Body>
-              <Card.Link style={{float:'left', padding: '1rem'}} href="#"><Button variant="flat" size="xxs">View Vehicles</Button></Card.Link>
+              <Card.Link style={{float:'left', padding: '1rem'}} href="/companylist"><Button variant="flat" size="xxs">View Vehicles</Button></Card.Link>
               <Card.Link style={{float:'right', padding: '1rem' }} href="#"><Button variant="flat" size="xxs">More Information</Button></Card.Link>
             </Card.Body>
           </Card>
