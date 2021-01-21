@@ -10,7 +10,7 @@ import {CompanyList} from './Components/CompanyList'
 import {StaffPanel} from './Components/ManagementComps/StaffPanel'
 import {Login} from './Components/Login'
 import {Navigation} from './Components/Navigation'
-import {PopUpAddVehicle} from './Components/ManagementComps/PopUpAddVehicle'
+import {EditVehicle} from './Components/ManagementComps/EditVehicle'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 
@@ -32,6 +32,7 @@ function App() {
     <Route path='/companylist' component = {CompanyList} exact/>
     <Route path='/staffpanel' component = {StaffPanel} exact/>
     <Route path='/login' component = {Login} exact/>
+    <Route path='/editvehicle' component = {EditVehicle} exact/>
 
     </Switch>
 

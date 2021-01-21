@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { PopUpAddVehicle } from "./PopUpAddVehicle";
+import { EditVehicle } from "./EditVehicle";
 
 import {
   Card,
@@ -11,6 +12,7 @@ import {
   Row,
   Col,
   ButtonToolbar,
+  Modal,
 } from "react-bootstrap";
 
 export class ManageVehicles extends Component {
@@ -20,10 +22,15 @@ export class ManageVehicles extends Component {
     this.state = {
       Vehicles: [],
       AddVehiclePopUpShow: false,
+      EditVehiclePopUpShow: false,
     };
   }
 
   componentDidMount() {
+    this.RefleshList();
+  }
+
+  componentDidUpdate() {
     this.RefleshList();
   }
 
@@ -40,44 +47,54 @@ export class ManageVehicles extends Component {
 
   ShowPopUpAddVehicle = () => {
     this.setState({
-      AddVehiclePopUpShow: true
+      AddVehiclePopUpShow: true,
     });
   };
 
-  // SaveAndHidePopUpAddVehicle = () => {
-  //   this.setState({
-  //     AddVehiclePopUpShow: false
-  //   });
-  //   window.alert('saved')
-  // };
-
- HidePopUpAddVehicle = () => {
+  HidePopUpAddVehicle = () => {
     this.setState({
-      AddVehiclePopUpShow: false
+      AddVehiclePopUpShow: false,
     });
   };
+
+  ShowPopUpEditVehicle = () => {
+    this.setState({
+      EditVehiclePopUpShow: true,
+    });
+  };
+
+  HidePopUpEditVehicle = () => {
+    this.setState({
+      EditVehiclePopUpShow: false,
+    });
+  };
+
 
   render() {
     const { Vehicles } = this.state;
-   
-    console.log(this.state.ShowAddVehiclePopUp);
+
     return (
       <div>
-
+         {this.state.AddVehiclePopUpShow ? (
+          <PopUpAddVehicle onClose={this.HidePopUpAddVehicle} />
+        ) : null}
+        
         <Container className="p-3">
           <Row className="justify-content-md-center">
             <Col xs={4} sm={4} md={2}>
               <ButtonToolbar>
-                <Button size="lg" onClick={this.ShowPopUpAddVehicle}>Add Vehicle</Button>
+                <Button size="lg" onClick={this.ShowPopUpAddVehicle}>
+                  Add Vehicle
+                </Button>
               </ButtonToolbar>
             </Col>
           </Row>
         </Container>
 
-        {this.state.AddVehiclePopUpShow ? <PopUpAddVehicle onHide={this.SaveAndHidePopUpAddVehicle} onClose={this.HidePopUpAddVehicle}/> : null }
-
         <CardColumns className="justify-content-center">
-          {Vehicles.map((vehicle) => (
+          {Vehicles.sort((a, b) =>
+            a.DatetimeOfCreated > b.DatetimeOfCreated ? 1 : -1
+          ).map((vehicle) => (
             <Card
               border="secondary"
               key={vehicle.Id}
@@ -101,15 +118,22 @@ export class ManageVehicles extends Component {
                 </ListGroupItem>
               </ListGroup>
               <Card.Body>
-                <Card.Link href="">
-                  <Button variant="flat" size="xxs">
-                    Edit Vehicle Details
-                  </Button>
-                </Card.Link>
+                <Button
+                  onClick={this.ShowPopUpEditVehicle}
+                  variant="flat"
+                  size="xxs"
+                >
+                  Edit Vehicle Details
+                </Button>
               </Card.Body>
+             
             </Card>
           ))}
         </CardColumns>
+
+        {this.state.EditVehiclePopUpShow ? (
+                <EditVehicle  onClose={this.HidePopUpEditVehicle} vehicle = {this.state.Vehicles[15]}/>
+              ) : null}
       </div>
     );
   }

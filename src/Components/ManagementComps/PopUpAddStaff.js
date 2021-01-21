@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Modal, Button, Col, Form } from "react-bootstrap";
+import { Modal, Button, Row, Col, Form } from "react-bootstrap";
 
-export class PopUpAddVehicle extends Component {
+export class PopUpAddStaff extends Component {
     constructor(props) {
         super(props);
     
@@ -10,46 +10,46 @@ export class PopUpAddVehicle extends Component {
         };
       }
 
-  HandleSubmit = (e) => {
-    e.preventDefault(); //linkteki sorguyu engeller
+//   HandleSubmit = (e) => {
+//     e.preventDefault(); //linkteki sorguyu engeller
 
-    let form = e.target;
+//     let form = e.target;
 
-    let url = "http://localhost:55991/api/Company/CompanyVehicleAdd";
+//     let url = "http://localhost:55991/api/Company/CompanyVehicleAdd";
     
     
-    fetch(url, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        AmoutOfSeat: form.AmountOfSeat.value,
-        Brand: form.Brand.value,
-        CompanyId: form.CompanyId.value,
-        CurrentKm: form.CurrentKm.value,
-        DailyPrice: form.DailyPrice.value,
-        HaveAirBag: this.state.airBag,
-        MinimumAgeLimit: form.MinimumAgeLimit.value,
-        ModelName: form.ModelName.value,
-        PhotoURL: null,
-        Plate: form.Plate.value,
-        RequiredOldForLicense: form.RequiredOldForLicense.value,
-      })
-    })
-    .then(res => res.JSON())
-    .then((result) => 
-      {
-          alert('result: ' + result)
-          this.props.onClose()
-      },
-      (error) => 
-      {
-          alert("failed")
-      }
-      )
-  };
+//     fetch(url, {
+//       method: "POST",
+//       headers: {
+//         Accept: "application/json",
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         AmoutOfSeat: form.AmountOfSeat.value,
+//         Brand: form.Brand.value,
+//         CompanyId: form.CompanyId.value,
+//         CurrentKm: form.CurrentKm.value,
+//         DailyPrice: form.DailyPrice.value,
+//         HaveAirBag: this.state.airBag,
+//         MinimumAgeLimit: form.MinimumAgeLimit.value,
+//         ModelName: form.ModelName.value,
+//         PhotoURL: null,
+//         Plate: form.Plate.value,
+//         RequiredOldForLicense: form.RequiredOldForLicense.value,
+//       })
+//     })
+//     .then(res => res.JSON())
+//     .then((result) => 
+//       {
+//           alert('result: ' + result)
+//           this.props.onClose()
+//       },
+//       (error) => 
+//       {
+//           alert("failed")
+//       }
+//       )
+//   };
 
   yourChangeHandler(event) {
       this.setState({
@@ -68,7 +68,7 @@ export class PopUpAddVehicle extends Component {
           centered
         >
           <Modal.Header>
-              Add New Vehicle
+              Add New Staff
           </Modal.Header>
           <Modal.Body>
             <div className="container">

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card, ListGroupItem, ListGroup ,CardColumns, Button, ButtonToolbar} from "react-bootstrap";
 import {MoreInformationForCompany} from './MoreInformatinForCompany'
+import axios from "axios";
 
 export class CompanyList extends Component {
   constructor(props) {
@@ -12,19 +13,30 @@ export class CompanyList extends Component {
   }
 
 
-  componentDidMount() {
-    this.RefleshList();
-  }
-
-  async RefleshList() {
+  componentDidMount = async () =>
+  {
     let url = "http://localhost:55991/api/Company/CompanyListGet";
-    let response = await fetch(url);
-    let data = await response.json();
+    var self = this
+    axios
+    .get(url)
+    .then(function (response) {
+      // handle success
+      self.setState(
+        {
+          Companies : response.data
+        })
 
-    this.setState({
-      Companies: data,
+    })
+    .catch(function (error) {
+      // handle error
+      console.log(error);
+    })
+    .then(function () {
+      // always executed
     });
   }
+
+
 
   render() {
     const { Companies } = this.state;

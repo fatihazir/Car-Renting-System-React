@@ -8,7 +8,8 @@ export class Login extends Component {
             <div className="nt-5 d-flex justify-content-left">
                 <h1>Login</h1>
                
-                <a href="/companypanel"><Button variant="flat" size="xxs">Sirket paneli</Button></a>
+                <a href="/companypanel"><Button variant="flat" size="xxs">Sirket paneli </Button></a>
+                <i class="fas fa-trash-alt"></i>
                
                 
             </div>
