@@ -38,18 +38,19 @@ export class PopUpAddVehicle extends Component {
         RequiredOldForLicense: form.RequiredOldForLicense.value,
       })
     })
-    .then(res => res.JSON())
+    .then(res => res.json())
     .then((result) => 
-      {
-          alert('result: ' + result)
-          this.props.onClose()
-      },
-      (error) => 
-      {
-          alert("failed")
-      }
-      )
-  };
+    {
+        alert('result: ' + result)
+        this.props.onClose()
+    }).catch((error) => 
+    {
+      alert("failedddddd " + error.message)
+    }
+    
+    )
+};
+
 
   yourChangeHandler(event) {
       this.setState({

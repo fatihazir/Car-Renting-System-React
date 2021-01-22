@@ -12,24 +12,35 @@ export class EditVehicle extends Component {
     
   }
 
-  HandleSubmit = (e) => {
+  RemoveVehicle = async () =>
+  {
+    let VehicleId = this.state.vehicle[0].Id
+    let url = "http://localhost:55991/api/Vehicle/VehicleRemove/" + VehicleId;
+    let response = await fetch(url);
+    let data = await response.json();
+    alert(data)
+    this.props.onClose()
+  }
+
+  HandleSubmit =async (e) => {
     e.preventDefault(); //linkteki sorguyu engeller
 
     let form = e.target;
 
-    let url = "http://localhost:55991/api/Vehicle/VehicleUpdate"/ + this.state.vehicle.Id;
+    let url = "http://localhost:55991/api/Vehicle/VehicleUpdate";
     
     
-    fetch(url, {
+    await fetch(url, {
       method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        Id : form.VehicleId.value,
+        CompanyId : this.state.vehicle[0].CompanyId,
         AmoutOfSeat: form.AmountOfSeat.value,
         Brand: form.Brand.value,
-        CompanyId: form.CompanyId.value,
         CurrentKm: form.CurrentKm.value,
         DailyPrice: form.DailyPrice.value,
         HaveAirBag: this.state.airBag,
@@ -38,18 +49,19 @@ export class EditVehicle extends Component {
         PhotoURL: null,
         Plate: form.Plate.value,
         RequiredOldForLicense: form.RequiredOldForLicense.value,
+        DatetimeOfCreated : this.state.vehicle[0].DatetimeOfCreated
       })
     })
     .then(res => res.JSON())
     .then((result) => 
       {
-          alert('result: ' + result)
+          alert('Result: ' + result)
           this.props.onClose()
-      },
-      (error) => 
+      }).catch((error) => 
       {
-          alert("failed")
+        alert(error.message)
       }
+      
       )
   };
 
@@ -61,8 +73,7 @@ yourChangeHandler(event) {
 }
 
 render() {
-  let vehicle = this.state.vehicle
-  console.log(vehicle)
+  let vehicle = this.state.vehicle[0]
 
 return (
   <div>
@@ -84,10 +95,10 @@ return (
                 <Form.Control
                   size="sm"
                   type="text"
-                  name="CompanyId"
+                  name="VehicleId"
                   required
                   placeholder={vehicle.Id}
-                 
+                  defaultValue = {vehicle.Id}
                   readOnly
                 />
               </Form.Group>
@@ -96,7 +107,7 @@ return (
                 <Form.Control
                   size="sm"
                   type="text"
-                  name="CompanyId"
+                  name="DateTimeOfCreated"
                   required
                   placeholder={vehicle.DatetimeOfCreated}
                   readOnly
@@ -132,7 +143,7 @@ return (
                   placeholder=""
                   name="Plate"
                   required
-                  defaultValue = {vehicle.ModelName}
+                  defaultValue = {vehicle.Plate}
                 />
               </Form.Group>
               <Form.Group controlId="exampleForm.ControlSelect1">
@@ -225,6 +236,14 @@ return (
       
 
       <Modal.Footer>
+      <Button
+          style={{ padding: "1rem" , marginRight : '1%'}}
+          size="sm"
+          variant="secondary"
+          onClick={this.RemoveVehicle}
+        >
+          Remove Vehicle
+        </Button>
         <Button
           style={{ padding: "1rem" }}
           variant="danger"

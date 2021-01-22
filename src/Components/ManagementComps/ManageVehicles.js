@@ -23,6 +23,7 @@ export class ManageVehicles extends Component {
       Vehicles: [],
       AddVehiclePopUpShow: false,
       EditVehiclePopUpShow: false,
+      VehicleIdDueToEdit : 1
     };
   }
 
@@ -57,9 +58,10 @@ export class ManageVehicles extends Component {
     });
   };
 
-  ShowPopUpEditVehicle = () => {
+  ShowPopUpEditVehicle = (vehicleId) => {
     this.setState({
       EditVehiclePopUpShow: true,
+      VehicleIdDueToEdit : vehicleId
     });
   };
 
@@ -119,7 +121,7 @@ export class ManageVehicles extends Component {
               </ListGroup>
               <Card.Body>
                 <Button
-                  onClick={this.ShowPopUpEditVehicle}
+                  onClick={() => this.ShowPopUpEditVehicle(vehicle.Id)}
                   variant="flat"
                   size="xxs"
                 >
@@ -132,8 +134,9 @@ export class ManageVehicles extends Component {
         </CardColumns>
 
         {this.state.EditVehiclePopUpShow ? (
-                <EditVehicle  onClose={this.HidePopUpEditVehicle} vehicle = {this.state.Vehicles[15]}/>
+                <EditVehicle  onClose={this.HidePopUpEditVehicle} vehicle = {this.state.Vehicles.filter(item => item.Id == this.state.VehicleIdDueToEdit)} />
               ) : null}
+
       </div>
     );
   }
