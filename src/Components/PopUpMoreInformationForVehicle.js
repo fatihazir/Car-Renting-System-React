@@ -7,14 +7,26 @@ export class PopUpMoreInformationForVehicle extends Component {
     super(props);
 
     this.state = {
-      Vehicle: this.props.vehicle[0]
+      Vehicle: this.props.vehicle[0],
+      Company : {}
     };
   }
 
 
+  componentDidMount = async () => {
+    let url = "http://localhost:55991/api/Company/CompanyInfoGet/" + this.state.Vehicle.CompanyId;
+    let response = await fetch(url);
+    let data = await response.json();
+    console.log(data)
+    this.setState({
+      Company : data
+    })
+  }
+
 
   render() {
-    const { Vehicle } = this.state;
+    const { Vehicle } = this.state
+    const { Company } = this.state
 
     return (
       <div>
@@ -36,6 +48,9 @@ export class PopUpMoreInformationForVehicle extends Component {
             <p>Minimum Age Limit :  {Vehicle.MinimumAgeLimit}</p>
             <p>Plate : {Vehicle.Plate}</p>
             <p>Required Old For License : {Vehicle.RequiredOldForLicense}</p>
+            <hr/>
+            <p>Company Name: {Company.Name}</p>
+            <p>Company Point: {Company.Point}</p>
 
           </Modal.Body>
           
@@ -46,7 +61,14 @@ export class PopUpMoreInformationForVehicle extends Component {
               variant="danger"
               onClick={this.props.onClose}
             >
-              Close 
+              Close
+            </Button>
+            <Button
+                style={{ padding: "1rem", marginLeft: "1rem" }}
+                variant="success"
+
+            >
+              Rente basınca aracın idsini alıp bir sayfaya yönlendir. o sayfanın cdm kısmında arac idsi ve şirket bilgilerini getir.
             </Button>
           </Modal.Footer>
         </Modal>

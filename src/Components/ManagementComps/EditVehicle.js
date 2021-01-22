@@ -52,7 +52,7 @@ export class EditVehicle extends Component {
         DatetimeOfCreated : this.state.vehicle[0].DatetimeOfCreated
       })
     })
-    .then(res => res.JSON())
+    .then(res => res.json())
     .then((result) => 
       {
           alert('Result: ' + result)
