@@ -43,7 +43,7 @@ export class PopUpMoreInformationForVehicle extends Component {
           <Modal.Body>
             <p>Amount of seat : {Vehicle.AmoutOfSeat}</p>
             <p>Current Km : {Vehicle.CurrentKm}</p>
-            <p>Daily Price : {Vehicle.DailyPrice}</p>
+            <p><i className="fas fa-lira-sign"></i> Daily Price : {Vehicle.DailyPrice}</p>
             <p>Airbag : {Vehicle.HaveAirBag}</p>
             <p>Minimum Age Limit :  {Vehicle.MinimumAgeLimit}</p>
             <p>Plate : {Vehicle.Plate}</p>
@@ -63,7 +63,7 @@ export class PopUpMoreInformationForVehicle extends Component {
             >
               Close
             </Button>
-            <a href={'rentcar/' + Vehicle.Id}>
+            <a href={'http://localhost:3000/rentcar/' + Vehicle.Id}>
               <Button
                   style={{ padding: "1rem", marginLeft: "1rem" }}
                   variant="success"

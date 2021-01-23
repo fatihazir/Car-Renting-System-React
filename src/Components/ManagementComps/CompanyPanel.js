@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import {
   Card,
-  ListGroupItem,
-  ListGroup,
   CardColumns,
-  Button,
-  ButtonToolbar,
+  Button
 } from "react-bootstrap";
 
 export class CompanyPanel extends Component {

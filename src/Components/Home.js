@@ -16,7 +16,7 @@ export class Home extends Component {
     this.state = {
       Vehicles: [],
       MoreInformationForVehiclePopUp: false,
-      VehicleIdToPop: 9,
+      VehicleIdToPop: null,
     };
   }
 

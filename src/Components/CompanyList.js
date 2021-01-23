@@ -4,8 +4,7 @@ import {
   ListGroupItem,
   ListGroup,
   CardColumns,
-  Button,
-  ButtonToolbar,
+  Button
 } from "react-bootstrap";
 
 import axios from "axios";
@@ -97,13 +96,15 @@ export class CompanyList extends Component {
               </ListGroup>
               <Card.Body>
                 <Card.Link style={{ float: "left", padding: "1rem" }}>
-                  <Button variant="flat" size="xxs" >
-                    View Vehicles
-                  </Button>
+                 <a href={'http://localhost:3000/vehiclesbycompany/' + company.Id}>
+                   <Button variant="flat" size="xxs" >
+                     View Vehicles
+                   </Button>
+                 </a>
                 </Card.Link>
                 <Card.Link style={{ float: "right", padding: "1rem" }} onClick={() => this.ShowPopUpMoreInformation(company.Id)}>
                   <Button variant="flat" size="xxs">
-                    
+
                     More Information
                   </Button>
                 </Card.Link>

@@ -36,6 +36,7 @@ export class PopUpAddVehicle extends Component {
         PhotoURL: null,
         Plate: form.Plate.value,
         RequiredOldForLicense: form.RequiredOldForLicense.value,
+        DatetimeOfCreated : new Date()
       })
     })
     .then(res => res.json())
@@ -45,7 +46,7 @@ export class PopUpAddVehicle extends Component {
         this.props.onClose()
     }).catch((error) => 
     {
-      alert("failedddddd " + error.message)
+      alert("failed " + error.message)
     }
     
     )
