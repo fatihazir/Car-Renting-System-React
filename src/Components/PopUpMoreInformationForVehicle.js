@@ -63,13 +63,15 @@ export class PopUpMoreInformationForVehicle extends Component {
             >
               Close
             </Button>
-            <Button
-                style={{ padding: "1rem", marginLeft: "1rem" }}
-                variant="success"
+            <a href={'rentcar/' + Vehicle.Id}>
+              <Button
+                  style={{ padding: "1rem", marginLeft: "1rem" }}
+                  variant="success"
 
-            >
-              Rente basınca aracın idsini alıp bir sayfaya yönlendir. o sayfanın cdm kısmında arac idsi ve şirket bilgilerini getir.
-            </Button>
+              >
+                Rent
+              </Button>
+            </a>
           </Modal.Footer>
         </Modal>
       </div>

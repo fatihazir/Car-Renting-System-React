@@ -11,6 +11,7 @@ import {StaffPanel} from './Components/ManagementComps/StaffPanel'
 import {Login} from './Components/Login'
 import {Navigation} from './Components/Navigation'
 import {EditVehicle} from './Components/ManagementComps/EditVehicle'
+import {RentCar} from './Components/RentCar'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 
@@ -33,6 +34,7 @@ function App() {
     <Route path='/staffpanel' component = {StaffPanel} exact/>
     <Route path='/login' component = {Login} exact/>
     <Route path='/editvehicle' component = {EditVehicle} exact/>
+    <Route path='/rentcar/:id' component = {RentCar} exact/>
 
     </Switch>
 
