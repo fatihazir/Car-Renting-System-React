@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import { Button, Modal } from "react-bootstrap";
 
 export class EditStaff extends Component {
-  constructor(props) {
-    super(props);
-    
-  }
   render() {
      
     return (

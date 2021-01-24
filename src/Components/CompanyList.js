@@ -114,7 +114,7 @@ export class CompanyList extends Component {
         </CardColumns>
 
         {this.state.MoreInformationByCompanyPopUp ? (
-                <PopUpMoreInformationForCompany  onClose={this.HidePopUpMoreInformation} company = {this.state.Companies.filter(item => item.Id == this.state.CompanyIdToPop)} />
+                <PopUpMoreInformationForCompany  onClose={this.HidePopUpMoreInformation} company = {this.state.Companies.filter(item => item.Id === this.state.CompanyIdToPop)} />
               ) : null}
       </div>
     );

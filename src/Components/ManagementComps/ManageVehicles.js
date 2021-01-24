@@ -11,8 +11,7 @@ import {
   Container,
   Row,
   Col,
-  ButtonToolbar,
-  Modal,
+  ButtonToolbar
 } from "react-bootstrap";
 
 export class ManageVehicles extends Component {
@@ -134,7 +133,7 @@ export class ManageVehicles extends Component {
         </CardColumns>
 
         {this.state.EditVehiclePopUpShow ? (
-                <EditVehicle  onClose={this.HidePopUpEditVehicle} vehicle = {this.state.Vehicles.filter(item => item.Id == this.state.VehicleIdDueToEdit)} />
+                <EditVehicle  onClose={this.HidePopUpEditVehicle} vehicle = {this.state.Vehicles.filter(item => item.Id === this.state.VehicleIdDueToEdit)} />
               ) : null}
 
       </div>

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Modal, Button, Col, Form } from "react-bootstrap";
+import { Button, Col, Form} from "react-bootstrap";
 
 export class ManageCompany extends Component {
     constructor(props) {
@@ -12,6 +12,12 @@ export class ManageCompany extends Component {
 
     }
 
+    GetData = () =>
+    {
+        let data = sessionStorage.getItem('myData')
+        data = JSON.parse(data)
+        console.log(data)
+    }
 
     componentDidMount = async () => {
         let url = "http://localhost:55991/api/Company/CompanyInfoGet/" + this.state.CompanyId;
@@ -80,6 +86,7 @@ export class ManageCompany extends Component {
 
         return (
             <div>
+                <button onClick={() => this.GetData()}>Get Data</button>
                 <div className="container">
                     <Col md={12} xs={6}>
                         <Form onSubmit={this.HandleSubmit}>

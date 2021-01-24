@@ -11,8 +11,7 @@ import {
   Container,
   Row,
   Col,
-  ButtonToolbar,
-  Modal,
+  ButtonToolbar
 } from "react-bootstrap";
 
 export class ManageStaff extends Component {

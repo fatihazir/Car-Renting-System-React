@@ -1,6 +1,6 @@
-import React, { Component, useState } from "react";
+import React, { Component} from "react";
 
-import { Modal, Button, Col, Form } from "react-bootstrap";
+import { Modal, Button} from "react-bootstrap";
 
 export class PopUpMoreInformationForVehicle extends Component {
   constructor(props) {

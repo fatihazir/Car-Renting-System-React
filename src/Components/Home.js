@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component} from "react";
 import {
   Card,
   ListGroupItem,
@@ -99,7 +99,7 @@ export class Home extends Component {
         {this.state.MoreInformationForVehiclePopUp ? (
           <PopUpMoreInformationForVehicle
             onClose={this.HidePopUpMoreInformation}
-            vehicle = {this.state.Vehicles.filter(item => item.Id == this.state.VehicleIdToPop)}
+            vehicle = {this.state.Vehicles.filter(item => item.Id === this.state.VehicleIdToPop)}
           />
         ) : null}
       </div>
