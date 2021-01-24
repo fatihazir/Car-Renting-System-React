@@ -1,32 +1,33 @@
 import React, { Component } from "react";
 import { Button, Col, Form} from "react-bootstrap";
 
+let dataOfManager = sessionStorage.getItem('Manager')
+let Manager = JSON.parse(dataOfManager)
+console.log(Manager)
+
+
 export class ManageCompany extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-         CompanyId : 6,
          Company : {}
         };
 
     }
 
-    GetData = () =>
-    {
-        let data = sessionStorage.getItem('myData')
-        data = JSON.parse(data)
-        console.log(data)
-    }
+
 
     componentDidMount = async () => {
-        let url = "http://localhost:55991/api/Company/CompanyInfoGet/" + this.state.CompanyId;
-        let response = await fetch(url);
-        let data = await response.json();
+       if(Manager){
+           let url = "http://localhost:55991/api/Company/CompanyInfoGet/" + Manager.CompanyId;
+           let response = await fetch(url);
+           let data = await response.json();
 
-        this.setState({
-            Company : data
-        })
+           this.setState({
+               Company : data
+           })
+       }
     }
 
 
@@ -84,119 +85,120 @@ export class ManageCompany extends Component {
     render() {
         let company = this.state.Company
 
-        return (
-            <div>
-                <button onClick={() => this.GetData()}>Get Data</button>
-                <div className="container">
-                    <Col md={12} xs={6}>
-                        <Form onSubmit={this.HandleSubmit}>
-                            <Form.Group controlId="exampleForm.ControlInput1">
-                                <Form.Label>Company Id</Form.Label>
-                                <Form.Control
-                                    size="sm"
-                                    type="text"
-                                    name="CompanyId"
-                                    required
-                                    placeholder={company.Id}
-                                    defaultValue = {company.Id}
-                                    readOnly
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="exampleForm.ControlInput1">
-                                <Form.Label>DateTimeOfCreated</Form.Label>
-                                <Form.Control
-                                    size="sm"
-                                    type="text"
-                                    name="DateTimeOfCreated"
-                                    required
-                                    placeholder={company.DatetimeOfCreated}
-                                    defaultValue = {company.DatetimeOfCreated}
-                                    readOnly
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="exampleForm.ControlInput1">
-                                <Form.Label>Point</Form.Label>
-                                <Form.Control
-                                    size="sm"
-                                    type="text"
-                                    name="Point"
-                                    required
-                                    placeholder={company.Point}
-                                    defaultValue = {company.Point}
-                                    readOnly
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="exampleForm.ControlInput2">
-                                <Form.Label>Name</Form.Label>
-                                <Form.Control
-                                    size="sm"
-                                    type="text"
-                                    placeholder=""
-                                    required
-                                    name="Name"
-                                    defaultValue = {company.Name}
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="exampleForm.ControlInput3">
-                                <Form.Label>City</Form.Label>
-                                <Form.Control
-                                    size="sm"
-                                    type="text"
-                                    placeholder=""
-                                    name="City"
-                                    required
-                                    defaultValue = {company.City}
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="exampleForm.ControlInput4">
-                                <Form.Label>Address</Form.Label>
-                                <Form.Control
-                                    size="sm"
-                                    type="text"
-                                    placeholder=""
-                                    name="Address"
-                                    required
-                                    defaultValue = {company.Address}
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="exampleForm.ControlSelect1">
-                                <Form.Label>PhoneNumber</Form.Label>
-                                <Form.Control
-                                    size="sm"
-                                    type="text"
-                                    placeholder=""
-                                    name="PhoneNumber"
-                                    required
-                                    defaultValue = {company.PhoneNumber}
-                                />
-                            </Form.Group>
-                            <Form.Group>
-                                photo
-                                <Form.File
-                                    id="exampleFormControlFile1"
-                                    label="Example file input"
-                                />
-                            </Form.Group>
-                            <Form.Group controlId="exampleForm.ControlInput1">
-                                <Button
-                                    style={{ padding: "1rem" }}
-                                    variant="success"
-                                    type="submit"
-                                >
-                                    Update
-                                </Button>
-                            </Form.Group>
-                        </Form>
-                    </Col>
+        if(Manager){
+            return (
+                <div>
+                    <div className="container">
+                        <Col md={12} xs={6}>
+                            <Form onSubmit={this.HandleSubmit}>
+                                <Form.Group controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Company Id</Form.Label>
+                                    <Form.Control
+                                        size="sm"
+                                        type="text"
+                                        name="CompanyId"
+                                        required
+                                        placeholder={company.Id}
+                                        defaultValue = {company.Id}
+                                        readOnly
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="exampleForm.ControlInput1">
+                                    <Form.Label>DateTimeOfCreated</Form.Label>
+                                    <Form.Control
+                                        size="sm"
+                                        type="text"
+                                        name="DateTimeOfCreated"
+                                        required
+                                        placeholder={company.DatetimeOfCreated}
+                                        defaultValue = {company.DatetimeOfCreated}
+                                        readOnly
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="exampleForm.ControlInput1">
+                                    <Form.Label>Point</Form.Label>
+                                    <Form.Control
+                                        size="sm"
+                                        type="text"
+                                        name="Point"
+                                        required
+                                        placeholder={company.Point}
+                                        defaultValue = {company.Point}
+                                        readOnly
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="exampleForm.ControlInput2">
+                                    <Form.Label>Name</Form.Label>
+                                    <Form.Control
+                                        size="sm"
+                                        type="text"
+                                        placeholder=""
+                                        required
+                                        name="Name"
+                                        defaultValue = {company.Name}
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="exampleForm.ControlInput3">
+                                    <Form.Label>City</Form.Label>
+                                    <Form.Control
+                                        size="sm"
+                                        type="text"
+                                        placeholder=""
+                                        name="City"
+                                        required
+                                        defaultValue = {company.City}
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="exampleForm.ControlInput4">
+                                    <Form.Label>Address</Form.Label>
+                                    <Form.Control
+                                        size="sm"
+                                        type="text"
+                                        placeholder=""
+                                        name="Address"
+                                        required
+                                        defaultValue = {company.Address}
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="exampleForm.ControlSelect1">
+                                    <Form.Label>PhoneNumber</Form.Label>
+                                    <Form.Control
+                                        size="sm"
+                                        type="text"
+                                        placeholder=""
+                                        name="PhoneNumber"
+                                        required
+                                        defaultValue = {company.PhoneNumber}
+                                    />
+                                </Form.Group>
+                                <Form.Group>
+                                    photo
+                                    <Form.File
+                                        id="exampleFormControlFile1"
+                                        label="Example file input"
+                                    />
+                                </Form.Group>
+                                <Form.Group controlId="exampleForm.ControlInput1">
+                                    <Button
+                                        style={{ padding: "1rem" }}
+                                        variant="success"
+                                        type="submit"
+                                    >
+                                        Update
+                                    </Button>
+                                </Form.Group>
+                            </Form>
+                        </Col>
+                    </div>
                 </div>
-                <Button
-                    style={{ padding: "1rem" , marginLeft: '10%'}}
-                    variant="danger"
-                    onclick={this.RemoveCompany}
-                >
-                    Remove Company
-                </Button>
-            </div>
-        );
+            );
+        }
+        else{
+            return(
+                <div>
+                    <h3 style={{textAlign:'center'}}>Yetkiniz yok</h3>
+                </div>
+            )
+        }
     }
 }

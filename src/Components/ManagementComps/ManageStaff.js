@@ -14,6 +14,11 @@ import {
   ButtonToolbar
 } from "react-bootstrap";
 
+
+let dataOfManager = sessionStorage.getItem('Manager')
+let Manager = JSON.parse(dataOfManager)
+
+
 export class ManageStaff extends Component {
   constructor(props) {
     super(props);
@@ -34,14 +39,16 @@ export class ManageStaff extends Component {
   }
 
   async RefleshList() {
-    let compId = "5";
-    let url = "http://localhost:55991/api/Company/CompanyStaffGet/" + compId;
-    let response = await fetch(url);
-    let data = await response.json();
+    if(Manager){
+      let compId = "5";
+      let url = "http://localhost:55991/api/Company/CompanyStaffGet/" + Manager.CompanyId;
+      let response = await fetch(url);
+      let data = await response.json();
 
-    this.setState({
-      Staff: data,
-    });
+      this.setState({
+        Staff: data,
+      });
+    }
   }
 
   ShowPopUpAddStaff = () => {
@@ -72,69 +79,78 @@ export class ManageStaff extends Component {
   render() {
     const { Staff } = this.state;
 
-    return (
-      <div>
-         {this.state.AddStaffPopUpShow ? (
-          <PopUpAddStaff onClose={this.HidePopUpAddStaff} />
-        ) : null}
-        
-        <Container className="p-3">
-          <Row className="justify-content-md-center">
-            <Col xs={4} sm={4} md={2}>
-              <ButtonToolbar>
-                <Button size="lg" onClick={this.ShowPopUpAddStaff}>
-                  Add Staff
-                </Button>
-              </ButtonToolbar>
-            </Col>
-          </Row>
-        </Container>
+   if(Manager){
+     return (
+         <div>
+           {this.state.AddStaffPopUpShow ? (
+               <PopUpAddStaff onClose={this.HidePopUpAddStaff} />
+           ) : null}
 
-        <CardColumns className="justify-content-center">
-          {Staff.sort((a, b) =>
-            a.DatetimeOfCreated > b.DatetimeOfCreated ? 1 : -1
-          ).map((staff) => (
-            <Card
-              border="secondary"
-              key={staff.Id}
-              style={{
-                width: "24rem",
-                justifyContent: "center",
-                marginLeft: "3rem",
-              }}
-            >
-              <Card.Img variant="top" src={staff.PhotoURL} />
-              <Card.Body>
-                <Card.Title>Model :</Card.Title>
-              </Card.Body>
-              <ListGroup className="list-group-flush">
-                <ListGroupItem>Brand : </ListGroupItem>
-                <ListGroupItem>
-                  Daily Price :  £
-                </ListGroupItem>
-                <ListGroupItem>
-                  Minimum Age Limit : 
-                </ListGroupItem>
-              </ListGroup>
-              <Card.Body>
-                <Button
-                  onClick={this.ShowPopUpEditStaff}
-                  variant="flat"
-                  size="xxs"
-                >
-                  Edit Vehicle Details
-                </Button>
-              </Card.Body>
-             
-            </Card>
-          ))}
-        </CardColumns>
+           <Container className="p-3">
+             <Row className="justify-content-md-center">
+               <Col xs={4} sm={4} md={2}>
+                 <ButtonToolbar>
+                   <Button size="lg" onClick={this.ShowPopUpAddStaff}>
+                     Add Staff
+                   </Button>
+                 </ButtonToolbar>
+               </Col>
+             </Row>
+           </Container>
 
-        {this.state.EditStaffPopUpShow ? (
-                <EditStaff  onClose={this.HidePopUpEditStaff}/>
-              ) : null}
-      </div>
-    );
+           <CardColumns className="justify-content-center">
+             {Staff.sort((a, b) =>
+                 a.DatetimeOfCreated > b.DatetimeOfCreated ? 1 : -1
+             ).map((staff) => (
+                 <Card
+                     border="secondary"
+                     key={staff.Id}
+                     style={{
+                       width: "24rem",
+                       justifyContent: "center",
+                       marginLeft: "3rem",
+                     }}
+                 >
+                   <Card.Img variant="top" src={staff.PhotoURL} />
+                   <Card.Body>
+                     <Card.Title>Model :</Card.Title>
+                   </Card.Body>
+                   <ListGroup className="list-group-flush">
+                     <ListGroupItem>Brand : </ListGroupItem>
+                     <ListGroupItem>
+                       Daily Price :  £
+                     </ListGroupItem>
+                     <ListGroupItem>
+                       Minimum Age Limit :
+                     </ListGroupItem>
+                   </ListGroup>
+                   <Card.Body>
+                     <Button
+                         onClick={this.ShowPopUpEditStaff}
+                         variant="flat"
+                         size="xxs"
+                     >
+                       Edit Vehicle Details
+                     </Button>
+                   </Card.Body>
+
+                 </Card>
+             ))}
+           </CardColumns>
+
+           {this.state.EditStaffPopUpShow ? (
+               <EditStaff  onClose={this.HidePopUpEditStaff}/>
+           ) : null}
+         </div>
+     );
+   }
+   else{
+     return(
+         <div>
+           <h3 style={{textAlign:'center'}}>Yetkiniz yok</h3>
+         </div>
+     )
+   }
   }
 }
 

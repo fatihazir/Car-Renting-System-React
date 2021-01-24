@@ -3,6 +3,13 @@ import {Container, Button, Col, Row, Form, Card} from "react-bootstrap";
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
 
+let dataOfManager = sessionStorage.getItem('Manager')
+let Manager = JSON.parse(dataOfManager)
+console.log(Manager)
+let dataOfStaff = sessionStorage.getItem('Staff')
+let Staff = JSON.parse(dataOfStaff)
+
+
 export class RentCar extends Component {
     constructor(props) {
         super(props);

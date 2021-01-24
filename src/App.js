@@ -8,15 +8,15 @@ import {ManageVehicles} from './Components/ManagementComps/ManageVehicles'
 import {ManageStaff} from './Components/ManagementComps/ManageStaff'
 import {CompanyList} from './Components/CompanyList'
 import {StaffPanel} from './Components/ManagementComps/StaffPanel'
-import {Login} from './Components/Login'
 import {Navigation} from './Components/Navigation'
 import {EditVehicle} from './Components/ManagementComps/EditVehicle'
 import {RentCar} from './Components/RentCar'
 import {VehiclesByCompany} from './Components/VehiclesByCompany'
 import {Demo} from "./Components/Demo";
+import {ManagerLogin} from "./Components/ManagerLogin";
+import {StaffLogin} from "./Components/StaffLogin";
 
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
-
 
 
 function App() {
@@ -35,10 +35,11 @@ function App() {
     <Route path='/managestaff' component = {ManageStaff} exact />
     <Route path='/companylist' component = {CompanyList} exact/>
     <Route path='/staffpanel' component = {StaffPanel} exact/>
-    <Route path='/login' component = {Login} exact/>
     <Route path='/editvehicle' component = {EditVehicle} exact/>
     <Route path='/rentcar/:id' component = {RentCar} exact/>
     <Route path='/vehiclesbycompany/:id' component = {VehiclesByCompany} exact/>
+    <Route path='/managerlogin' component = {ManagerLogin} exact/>
+    <Route path='/StaffLogin' component = {StaffLogin} exact/>
     <Route path='/demo' component = {Demo} exact/>
 
     </Switch>
