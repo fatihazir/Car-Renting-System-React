@@ -5,7 +5,7 @@ import 'react-datepicker/dist/react-datepicker.css'
 
 let dataOfManager = sessionStorage.getItem('Manager')
 let Manager = JSON.parse(dataOfManager)
-console.log(Manager)
+
 let dataOfStaff = sessionStorage.getItem('Staff')
 let Staff = JSON.parse(dataOfStaff)
 
@@ -52,7 +52,7 @@ export class RentCar extends Component {
                 CustomerId : this.state.Customer.Id,
                 EndingOfRenting : this.state.EndingOfRenting,
                 BeginningOfRenting : this.state.BeginningOfRenting,
-                DatetimeOfCreated : this.state.TodaysDate
+                DatetimeOfCreated : new Date()
             })
         })
             .then(res => res.json())

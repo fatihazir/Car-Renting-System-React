@@ -23,7 +23,7 @@ export class CompanyPanel extends Component {
           <CardColumns className="justify-content-center">
 
             <Card style={{ width: "30rem", justifyContent:'center', marginLeft: '25rem'}}>
-              <Card.Img variant="top" src="https://icon-library.com/images/staff-icon-png/staff-icon-png-10.jpg" />
+
               <Card.Body>
                 <Card.Title>My Staff</Card.Title>
                 <Card.Text>
@@ -34,7 +34,7 @@ export class CompanyPanel extends Component {
             </Card>
 
             <Card style={{ width: "30rem", justifyContent:'center', marginLeft: '30rem'}}>
-              <Card.Img variant="top" src="https://icon-library.com/images/corporate-icon-png/corporate-icon-png-8.jpg" />
+
               <Card.Body>
                 <Card.Title>My Company</Card.Title>
                 <Card.Text>
@@ -47,7 +47,7 @@ export class CompanyPanel extends Component {
           </CardColumns>
             <CardColumns className="justify-content-center">
               <Card style={{ width: "30rem", justifyContent:'center', marginLeft: '25rem'}}>
-                <Card.Img variant="top" src="https://lh3.googleusercontent.com/proxy/l9WBB6H2WGdEj31cQbzoyG5lo-QC9qBhoYZheK53I49R3FTLyHDE7o5ljnPj9qmQUICTP81jSgdPEFUstKBsFdc5xzrCQbMbMn0gXdNPWOA8sJ6ZHrH7y-kNOhX9Ng" />
+
                 <Card.Body>
                   <Card.Title>My Vehicles</Card.Title>
                   <Card.Text>
@@ -59,13 +59,13 @@ export class CompanyPanel extends Component {
 
 
               <Card style={{ width: "30rem", justifyContent:'center', marginLeft: '30rem'}}>
-                <Card.Img variant="top" src="https://image.pngaaa.com/413/1203413-middle.png" />
+
                 <Card.Body>
                   <Card.Title>Rezervations</Card.Title>
                   <Card.Text>
                     <br/>
                   </Card.Text>
-                  <a style={{float:'left', marginBottom : '1rem'}} href="/managecompany"><Button variant="flat" size="xxs">Manage Company</Button></a>
+                  <a style={{float:'left', marginBottom : '1rem'}} href="/managerezervations"><Button variant="flat" size="xxs">Manage Company</Button></a>
                 </Card.Body>
               </Card>
             </CardColumns>
@@ -81,7 +81,7 @@ export class CompanyPanel extends Component {
             </CardColumns>
             <CardColumns className="justify-content-center">
               <Card style={{ width: "30rem", justifyContent:'center', marginLeft: '25rem'}}>
-                <Card.Img variant="top" src="https://lh3.googleusercontent.com/proxy/l9WBB6H2WGdEj31cQbzoyG5lo-QC9qBhoYZheK53I49R3FTLyHDE7o5ljnPj9qmQUICTP81jSgdPEFUstKBsFdc5xzrCQbMbMn0gXdNPWOA8sJ6ZHrH7y-kNOhX9Ng" />
+                <Card.Img variant="top" src="https://img.lovepik.com/element/40019/3112.png_860.png" />
                 <Card.Body>
                   <Card.Title>My Vehicles</Card.Title>
                   <Card.Text>

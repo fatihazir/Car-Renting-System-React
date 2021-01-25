@@ -28,11 +28,11 @@ export class PopUpMoreInformationForCompany extends Component {
               <b>{Company.Name}</b>
           </Modal.Header>
           <Modal.Body>
-              <p>City : {Company.City}</p>
-              <p>Address : {Company.Address}</p>
-              <p>Phone : {Company.PhoneNumber}</p>
-              <p>Point : {Company.Point} / 5</p>
-              <p>Amount of vehicle : {Company.VehicleAmount}</p>
+              <p> <i className="fas fa-map-marked-alt"></i> City : {Company.City}</p>
+              <p> <i className="fas fa-map-marked-alt"></i> Address : {Company.Address}</p>
+              <p><i className="fas fa-phone-square-alt"></i> Phone : {Company.PhoneNumber}</p>
+              <p> <i className="fas fa-star"></i> Point : {Company.Point} / 5</p>
+              <p> <i className="fas fa-car"></i> Amount of vehicle : {Company.VehicleAmount}</p>
               
           </Modal.Body>
           

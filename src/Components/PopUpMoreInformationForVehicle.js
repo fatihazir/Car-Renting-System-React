@@ -49,8 +49,8 @@ export class PopUpMoreInformationForVehicle extends Component {
             <p>Plate : {Vehicle.Plate}</p>
             <p>Required Old For License : {Vehicle.RequiredOldForLicense}</p>
             <hr/>
-            <p>Company Name: {Company.Name}</p>
-            <p>Company Point: {Company.Point}</p>
+            <p><i className="fas fa-building"></i> Company Name: {Company.Name}</p>
+            <p> <i className="fas fa-star"></i> Company Point: {Company.Point}</p>
 
           </Modal.Body>
           

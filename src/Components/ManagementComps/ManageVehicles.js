@@ -121,8 +121,7 @@ export class ManageVehicles extends Component {
                       border="secondary"
                       key={vehicle.Id}
                       style={{
-                        width: "24rem",
-                        justifyContent: "center",
+                        width: "30rem",
                         marginLeft: "3rem",
                       }}
                   >

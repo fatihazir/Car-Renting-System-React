@@ -90,9 +90,9 @@ export class CompanyList extends Component {
                 <Card.Title>{company.Name}.</Card.Title>
               </Card.Body>
               <ListGroup className="list-group-flush">
-                <ListGroupItem>{company.VehicleAmount}</ListGroupItem>
-                <ListGroupItem>{company.City}</ListGroupItem>
-                <ListGroupItem>{company.Point}</ListGroupItem>
+                <ListGroupItem><i className="fas fa-car"></i> {company.VehicleAmount}</ListGroupItem>
+                <ListGroupItem><i className="fas fa-map-marked-alt"></i> {company.City}</ListGroupItem>
+                <ListGroupItem> <i className="fas fa-star"></i> {company.Point}</ListGroupItem>
               </ListGroup>
               <Card.Body>
                 <Card.Link style={{ float: "left", padding: "1rem" }}>

@@ -3,7 +3,7 @@ import { Button, Col, Form} from "react-bootstrap";
 
 let dataOfManager = sessionStorage.getItem('Manager')
 let Manager = JSON.parse(dataOfManager)
-console.log(Manager)
+
 
 
 export class ManageCompany extends Component {

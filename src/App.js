@@ -6,6 +6,7 @@ import {CompanyPanel} from './Components/ManagementComps/CompanyPanel'
 import {ManageCompany} from './Components/ManagementComps/ManageCompany'
 import {ManageVehicles} from './Components/ManagementComps/ManageVehicles'
 import {ManageStaff} from './Components/ManagementComps/ManageStaff'
+import {ManageRezervations} from './Components/ManagementComps/ManageRezervations'
 import {CompanyList} from './Components/CompanyList'
 import {StaffPanel} from './Components/ManagementComps/StaffPanel'
 import {Navigation} from './Components/Navigation'
@@ -40,7 +41,8 @@ function App() {
     <Route path='/vehiclesbycompany/:id' component = {VehiclesByCompany} exact/>
     <Route path='/managerlogin' component = {ManagerLogin} exact/>
     <Route path='/StaffLogin' component = {StaffLogin} exact/>
-    <Route path='/demo' component = {Demo} exact/>
+    <Route path='/managerezervations' component = {ManageRezervations} exact/>
+
 
     </Switch>
 
