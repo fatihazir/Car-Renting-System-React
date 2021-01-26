@@ -20,7 +20,8 @@ export class RentCar extends Component {
             EndingOfRenting : null,
             BeginningDateOfDriverLicense : null,
             EndingDateOfDriverLicense : null,
-            TodaysDate : new Date()
+            TodaysDate : new Date(),
+            Staff: Staff
 
         };
     }
@@ -158,7 +159,7 @@ export class RentCar extends Component {
                                         size="sm"
                                         type="text"
                                         name="Name"
-                                        required
+
                                     />
                                 </Form.Group>
                                 <Form.Group controlId="exampleForm.ControlInput2">

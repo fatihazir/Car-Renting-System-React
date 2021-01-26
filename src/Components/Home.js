@@ -4,10 +4,12 @@ import {
   ListGroupItem,
   ListGroup,
   CardColumns,
-  Button,
+  Button, Form, Col,
 } from "react-bootstrap";
 import axios from "axios";
 import { PopUpMoreInformationForVehicle } from "./PopUpMoreInformationForVehicle";
+import DatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css'
 
 export class Home extends Component {
   constructor(props) {
@@ -17,6 +19,8 @@ export class Home extends Component {
       Vehicles: [],
       MoreInformationForVehiclePopUp: false,
       VehicleIdToPop: null,
+      BeginningOfRenting : null,
+      EndingOfRenting : null,
     };
   }
 
@@ -52,11 +56,92 @@ export class Home extends Component {
     this.setState({ MoreInformationForVehiclePopUp: false });
   };
 
+  HandleSubmit = async (e) => {
+    console.log('geldi')
+    console.log()
+    var self = this;
+
+    e.preventDefault(); //linkteki sorguyu engeller
+
+    let url = "http://localhost:55991/api/vehicle/VehicleGetAvailables";
+
+
+    await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        EndingOfRenting : this.state.EndingOfRenting,
+        BeginningOfRenting : this.state.BeginningOfRenting,
+      })
+    })
+        .then(res => res.json())
+        .then((result) =>
+        {
+          if(result !== null){
+            self.setState({
+              Vehicles: result,
+            });
+          }
+
+
+        }).catch((error) =>
+            {
+              alert("Failed " + error.message)
+            }
+
+        )
+  };
+
   render() {
     const { Vehicles } = this.state;
 
     return (
-      <div>
+
+        <div>
+          <Form onSubmit={this.HandleSubmit} style={{marginLeft:'50rem'}}>
+            <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Label>Beginning Date Of Renting</Form.Label>
+
+              <p>
+                <DatePicker selected={this.state.BeginningOfRenting}
+                            onChange={date => this.setState({
+                              BeginningOfRenting : date
+                            })}
+                            dateFormat = 'yyyy/MM/dd'
+                            minDate = {new Date()}
+                />
+              </p>
+
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlSelect1">
+              <Form.Label>Ending Date Of Renting</Form.Label>
+
+              <p>
+                <DatePicker selected={this.state.EndingOfRenting}
+                            onChange={date => this.setState({
+                              EndingOfRenting: date
+                            })}
+                            dateFormat = 'yyyy/MM/dd'
+                            minDate = {new Date()}
+                            filterDate = {date => date > this.state.BeginningOfRenting}/>
+              </p>
+
+            </Form.Group>
+            <Form.Group controlId="exampleForm.ControlInput1">
+              <Button
+                  style={{ padding: "1rem" }}
+                  variant="success"
+                  type="submit"
+              >
+                Apply Filter
+              </Button>
+            </Form.Group>
+          </Form>
+
+
         <CardColumns className="justify-content-center">
           {Vehicles.map((vehicle) => (
             <Card
